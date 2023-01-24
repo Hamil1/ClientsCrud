@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<meta charset="utf-8" name="viewport"
+		content="width=device-width, initial-scale=1"
+		http-equiv="X-UA-Conpatible" />
+	<title>Clients</title>
+</h:head>
+<h:body>
+	<h2>
+		<h:outputText value="Lista Clientes"></h:outputText>
+	</h2>
+	<h:form>
+	<h:commandButton action="#{ClientBean.save()}" value="New Client"></h:commandButton>
+	
+		<h:dataTable value="#{ClientBean.getClients()}" var="client"
+			border="1">
+			<h:column> 
+				<f:facet name="header">ID</f:facet>
+				<h:outputText value="#{client.id}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Nombres</f:facet>
+				<h:outputText value="#{client.fName}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Apellidos</f:facet>
+				<h:outputText value="#{client.lName}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Direccion</f:facet>
+				<h:outputText value="#{client.address}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Editar</f:facet>
+				<h:commandButton action="#{ClientBean.editById(client.id)}" value="Edit"></h:commandButton>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Eliminar</f:facet>
+				<h:commandButton action="#{ClientBean.delete(client.id)}" value="Delete"></h:commandButton>
+			</h:column>
+		</h:dataTable>
+	</h:form>
+</h:body>
+</html>
